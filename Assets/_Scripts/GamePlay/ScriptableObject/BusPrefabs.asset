@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de9131eea5132142ad8562864f604ba, type: 3}
+  m_Name: BusPrefabs
+  m_EditorClassIdentifier: 
+  sixx3Prefab: {fileID: 3586033262087594652, guid: c22f440562b867141b87dccd48a8c83e, type: 3}
+  sixx4Prefab: {fileID: 3586033262087594652, guid: 0fd8b4f111b7d6c468513df03e17887a, type: 3}
+  sevenx5Prefab: {fileID: 1405437707013208506, guid: 8791c2f7740818c45aa912a5fa82d423, type: 3}
+  eightx4Prefab: {fileID: 7386493486337693930, guid: 0f17efa4c801ae14d9e1f041c79f6cb0, type: 3}
+  eightx5Prefab: {fileID: 7386493486337693930, guid: 92827dfe5524e714683487b6d8c59f61, type: 3}
+  tenx5Prefab: {fileID: 1887560747162436418, guid: ff148948abfd8794ba16c912d0ee54bd, type: 3}
+  tenx6Prefab: {fileID: 7765368242568319993, guid: 59e2ea4d4025b9a4c81047a1f4bbda3f, type: 3}
+  thirdteenx7Prefab: {fileID: 3753055289318463364, guid: ca3f770d70ca6a143a69c92bc6edfb7d, type: 3}

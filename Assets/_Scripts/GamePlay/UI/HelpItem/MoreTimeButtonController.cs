@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MoreTimeButtonController : MonoBehaviour
 {
+    public TimeController timeController;
     public Button moreTimeButton;
     private void Start()
     {
@@ -14,6 +15,7 @@ public class MoreTimeButtonController : MonoBehaviour
     void OnMoreTimeButtonClick()
     {
         Debug.Log(1);
+        timeController.AddTime(2);
     }
 
 }

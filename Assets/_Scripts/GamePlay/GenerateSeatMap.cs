@@ -62,7 +62,7 @@ public class GenerateSeatMap : MonoBehaviour
             // Kiểm tra xem seat có được tạo thành công không
             if (seat != null)
             {
-                gridManager.PlaceSeatOnGrid(seat, seatData.x, seatData.y);
+                gridManager.PlaceSeatOnGrid(seat, seatData.row, seatData.col);
                 seat.movable = seat.seatColor != EnumColor.Grey;
             }
         }

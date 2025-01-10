@@ -34,12 +34,12 @@ public class InstructionPanelController : MonoBehaviour
             case 1:
                 MoveHand();
                 break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
+            //case 2:
+            //    break;
+            //case 3:
+            //    break;
+            //case 4:
+            //    break;
             default:
                 break;
         }

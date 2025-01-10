@@ -18,98 +18,98 @@ MonoBehaviour:
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 0
-    y: 0
+    row: 0
+    col: 0
   - seatType: 0
     seatColor: 8
     direction: 0
-    x: 0
-    y: 1
+    row: 0
+    col: 1
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 1
-    y: 1
-  - seatType: 0
-    seatColor: 8
-    direction: 0
-    x: 1
-    y: 3
-  - seatType: 0
-    seatColor: 8
-    direction: 0
-    x: 2
-    y: 1
+    row: 0
+    col: 2
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 2
-    y: 3
+    row: 1
+    col: 1
   - seatType: 0
     seatColor: 8
     direction: 0
-    x: 3
-    y: 1
-  - seatType: 0
-    seatColor: 2
-    direction: 0
-    x: 0
-    y: 2
+    row: 1
+    col: 3
   - seatType: 0
     seatColor: 8
     direction: 0
-    x: 3
-    y: 3
+    row: 2
+    col: 1
   - seatType: 0
     seatColor: 8
     direction: 0
-    x: 4
-    y: 1
-  - seatType: 0
-    seatColor: 2
-    direction: 0
-    x: 4
-    y: 3
-  - seatType: 0
-    seatColor: 2
-    direction: 0
-    x: 5
-    y: 1
+    row: 2
+    col: 3
   - seatType: 0
     seatColor: 8
     direction: 0
-    x: 6
-    y: 0
-  - seatType: 0
-    seatColor: 2
-    direction: 0
-    x: 6
-    y: 1
+    row: 3
+    col: 1
   - seatType: 0
     seatColor: 8
     direction: 0
-    x: 6
-    y: 2
+    row: 3
+    col: 3
+  - seatType: 0
+    seatColor: 8
+    direction: 0
+    row: 4
+    col: 1
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 6
-    y: 3
+    row: 4
+    col: 3
+  - seatType: 0
+    seatColor: 2
+    direction: 0
+    row: 5
+    col: 1
+  - seatType: 0
+    seatColor: 8
+    direction: 0
+    row: 6
+    col: 0
+  - seatType: 0
+    seatColor: 2
+    direction: 0
+    row: 6
+    col: 1
+  - seatType: 0
+    seatColor: 8
+    direction: 0
+    row: 6
+    col: 2
+  - seatType: 0
+    seatColor: 2
+    direction: 0
+    row: 6
+    col: 3
   - seatType: 1
     seatColor: 0
     direction: 0
-    x: 7
-    y: 0
+    row: 7
+    col: 0
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 7
-    y: 2
+    row: 7
+    col: 2
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 7
-    y: 3
+    row: 7
+    col: 3
   obstacles: []
   customers:
   - customerColor: 0

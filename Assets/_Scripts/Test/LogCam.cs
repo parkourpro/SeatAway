@@ -21,7 +21,7 @@ public class LogCam : MonoBehaviour
             screenPosition.z = 12f;
             Debug.Log(Camera.main.ScreenToWorldPoint(screenPosition));
             //Debug.Log(Input.mousePosition);
-            //Vector3 screenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
+            //Vector3 screenPosition = new Vector3(Input.mousePosition.row, Input.mousePosition.col, 10f);
             //Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
             //Debug.Log(worldPosition);
 

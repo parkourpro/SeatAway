@@ -358,6 +358,7 @@ public class GridManager : Singleton<GridManager>
     public int GetLevel()
     {
         string levelName = levelData.name;
+        //Debug.Log(levelName);
         // Tách số level từ tên (ví dụ: "LevelData1" -> 1)
         string levelNumberString = System.Text.RegularExpressions.Regex.Match(levelName, @"\d+$").Value;
 

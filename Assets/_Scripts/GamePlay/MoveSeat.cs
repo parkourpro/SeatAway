@@ -82,7 +82,7 @@ public class MoveSeat : MonoBehaviour
                     selectedSeatObject.transform.position += higher; //nâng ghế lên độ cao so với sàn
                     heightDraggingSeat = selectedSeatObject.transform.position.y;
                     offset = hit.point - selectedSeatObject.transform.position;
-                    offset.y = 0; //đặt offset là khoảng cách chỉ có x và z
+                    offset.y = 0; //đặt offset là khoảng cách chỉ có row và z
                     rb = selectedSeatObject.GetComponent<Rigidbody>();
                     seatAnimator = selectedSeatObject.GetComponent<Animator>();
 
@@ -145,7 +145,7 @@ public class MoveSeat : MonoBehaviour
                 //Debug.Log("Hit object: " + firstNumber + ", " + secondNumber);
                 //Debug.Log(cell.tile.transform.position);
                 GridManager.Instance.MoveSeat(firstNumber, secondNumber, selectedSeat);
-                //selectedSeatObject.transform.position = new Vector3(cell.tile.transform.position.x, selectedSeatObject.transform.position.y, cell.tile.transform.position.z);
+                //selectedSeatObject.transform.position = new Vector3(cell.tile.transform.position.row, selectedSeatObject.transform.position.col, cell.tile.transform.position.z);
                 //LogMap();
             }
             //

@@ -12,44 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0746d69640ee6a42a25179b1e58d786, type: 3}
   m_Name: LevelData9
   m_EditorClassIdentifier: 
-  timeInSecond: 20
+  timeInSecond: 30
   busType: 1
   seats:
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 0
-    y: 0
+    row: 0
+    col: 0
   - seatType: 0
     seatColor: 1
     direction: 0
-    x: 0
-    y: 3
+    row: 0
+    col: 3
   - seatType: 0
     seatColor: 8
     direction: 0
-    x: 1
-    y: 1
+    row: 1
+    col: 1
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 1
-    y: 2
+    row: 1
+    col: 2
   - seatType: 0
     seatColor: 8
     direction: 0
-    x: 1
-    y: 3
+    row: 1
+    col: 3
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 2
-    y: 0
+    row: 2
+    col: 0
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 2
-    y: 3
+    row: 2
+    col: 3
   obstacles: []
   customers:
   - customerColor: 2

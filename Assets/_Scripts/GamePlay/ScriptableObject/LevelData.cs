@@ -19,8 +19,8 @@ public class SeatData
     public SeatType seatType;
     public EnumColor seatColor;
     public Direction direction;
-    public int x;
-    public int y;
+    public int row;
+    public int col;
     //public bool movable = true; //this is base on seat color, grey is false, other is true
 }
 

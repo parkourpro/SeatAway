@@ -7,6 +7,7 @@ public class PlaceObstacleOnGridManager : MonoBehaviour
     private GridManager gridManager;
     public GameObject trafficConePrefab;
     public GameObject fireFosePrefab;
+    public GameObject fireTubePrefab;
     public GameObject bus;
     private Vector3 thickTilePrefab;
     private int numObstacle = 1;
@@ -57,6 +58,8 @@ public class PlaceObstacleOnGridManager : MonoBehaviour
                 return trafficConePrefab;
             case ObstacleType.FireHose:
                 return fireFosePrefab;
+            case ObstacleType.FireTube:
+                return fireTubePrefab;
             default:
                 return null;
         }

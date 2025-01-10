@@ -3,5 +3,6 @@
 public enum ObstacleType
 {
     FireHose,
-    TraficCone
+    TraficCone,
+    FireTube
 }

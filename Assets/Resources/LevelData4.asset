@@ -18,23 +18,23 @@ MonoBehaviour:
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 0
-    y: 2
+    row: 0
+    col: 2
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 1
-    y: 1
+    row: 1
+    col: 1
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 2
-    y: 0
+    row: 2
+    col: 0
   - seatType: 0
     seatColor: 2
     direction: 0
-    x: 2
-    y: 2
+    row: 2
+    col: 2
   obstacles: []
   customers:
   - customerColor: 2

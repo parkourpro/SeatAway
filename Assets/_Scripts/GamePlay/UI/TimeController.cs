@@ -118,4 +118,21 @@ public class TimeController : MonoBehaviour
         yield return StartCoroutine(busController.CloseDoor()); // Đợi đóng cửa xong
         CanvasController.onLoseDo?.Invoke(); // Sau khi cửa đóng, gọi hành động thua
     }
+
+    public void AddTime(int additionalSeconds)
+    {
+        if (!isSetUpTime || hasWon || isHandlingLose) return;
+
+        if (Time.timeSinceLevelLoad - startTime >= additionalSeconds)
+        {
+            startTime += additionalSeconds;
+        }
+        else
+        {
+            startTime = Time.timeSinceLevelLoad;
+        }
+
+    }
+
+
 }

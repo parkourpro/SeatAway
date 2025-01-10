@@ -29,7 +29,7 @@ public class Cv : MonoBehaviour
         //Debug.Log(r.pivot);
         //Debug.Log(r.offsetMin);
         //Vector2 a = gO.GetComponent<RectTransform>().anchorMax;
-        //a.x += 0.05f;
+        //a.row += 0.05f;
         //gO.GetComponent<RectTransform>().anchorMax = a;
 
     }

@@ -129,7 +129,8 @@ public class CustomerController : MonoBehaviour
     {
         yield return StartCoroutine(busController.CloseDoor());
         CanvasController.onWinDo?.Invoke();
-        PlayerPrefs.SetInt("UnlockLevel", PlayerPrefs.GetInt("UnlockLevel") + 1);
+        int unlockLevel = GridManager.Instance.GetLevel();
+        PlayerPrefs.SetInt("UnlockLevel", unlockLevel + 1);
     }
 
 }

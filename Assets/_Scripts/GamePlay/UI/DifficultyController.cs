@@ -25,8 +25,10 @@ public class DifficultyController : MonoBehaviour
     IEnumerator Start()
     {
         panel.SetActive(false);
-        levelNumber.text = "Level " + PlayerPrefs.GetInt("UnlockLevel").ToString();
+        //Debug.Log(PlayerPrefs.GetInt("UnlockLevel"));
         yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => GridManager.Instance.doneLevelData != "");
+        levelNumber.text = "Level " + GridManager.Instance.GetLevel();
         panel.SetActive(true);
         levelRect = level.GetComponent<RectTransform>();
         difficultyRect = difficulty.GetComponent<RectTransform>();

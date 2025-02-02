@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0746d69640ee6a42a25179b1e58d786, type: 3}
   m_Name: LevelData11
   m_EditorClassIdentifier: 
-  timeInSecond: 30
-  busType: 1
+  timeInSecond: 60
+  busType: 2
   seats:
   - seatType: 0
     seatColor: 2

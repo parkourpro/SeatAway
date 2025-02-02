@@ -143,7 +143,7 @@ public class BFS_FindPath : Singleton<BFS_FindPath>
         return null;
     }
 
-    private void SetSeatForCustomer(Seat seat, GridCell cell)
+    public void SetSeatForCustomer(Seat seat, GridCell cell)
     {
         int index = Mathf.Abs(seat.currentRow - cell.row) +
                             Mathf.Abs(seat.currentCol - cell.col);

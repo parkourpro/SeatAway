@@ -5,16 +5,18 @@ public class SpriteImg : ScriptableObject
 {
     public Sprite lv8;
     public Sprite lv12;
+    public Sprite paintSeat;
 
     public Sprite GetSprite(int level)
     {
         switch (level)
         {
-            case 8:
+            case 1:
                 return lv8;
-            case 12:
+            case 2:
                 return lv12;
-
+            case 3:
+                return paintSeat;
             default:
                 return null;
         }

@@ -15,7 +15,7 @@ public class CustomerMovement : MonoBehaviour
             Debug.LogWarning("Animator not found on customer object.");
             yield break;
         }
-
+        //Debug.Log(3);
         Vector3 direction = endPos - customerObject.transform.position;
         customerObject.transform.LookAt(endPos);
         animator.SetBool("Walk", true);

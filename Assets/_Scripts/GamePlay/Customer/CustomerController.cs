@@ -7,27 +7,26 @@ public class CustomerController : MonoBehaviour
 {
     private GridManager gridManager;
     public BusController busController;
-    //public CustomerManager customerManager;
-    //private Queue<Customer> customerList;
-    //public BFS_FindPath BFS_FindPath;
     private int doorRow, doorCol;
 
 
     private int totalCus;
-    //private Vector3 firstInLinePosition;
     private Dictionary<string, int> checkMoveSeat = new();
-    private Dictionary<string, bool> initialMovableSeat = new();
+    //private Dictionary<string, bool> initialMovableSeat = new();
+
+
+    private CustomerMovementSubject movementSubject;
 
     IEnumerator Start()
     {
         gridManager = GridManager.Instance;
         yield return new WaitUntil(() => gridManager.doneGrid != "");
         yield return new WaitUntil(() => CustomerManager.doneCustomer != "");
-        //customerList = customerManager.customerList;
         totalCus = CustomerManager.Instance.totalCustomer;
         doorRow = 0;
         doorCol = gridManager.GetGridCol() - 1;
-        //firstInLinePosition = customerManager.firstInLinePosition;
+
+        movementSubject = CustomerMovementSubject.Instance;
     }
 
 
@@ -55,15 +54,14 @@ public class CustomerController : MonoBehaviour
                 {
                     TimeController.stopTimeDelegate?.Invoke();
                 }
-                //yield return new WaitForSeconds(0.3f);
                 Seat foundSeat = BFS_FindPath.Instance.GetFoundSeat();
                 CustomerManager.Instance.customerList.Dequeue();
 
                 string seatName = foundSeat.associatedObject.name;
-                if (!initialMovableSeat.ContainsKey(seatName))
-                {
-                    initialMovableSeat.Add(seatName, foundSeat.movable);
-                }
+                //if (!initialMovableSeat.ContainsKey(seatName))
+                //{
+                //    initialMovableSeat.Add(seatName, foundSeat.movable);
+                //}
                 if (checkMoveSeat.ContainsKey(seatName))
                 {
                     checkMoveSeat[seatName]++;
@@ -85,6 +83,8 @@ public class CustomerController : MonoBehaviour
 
     private IEnumerator MoveToSeat(Customer customer, Stack<GridCell> path, Seat foundSeat, int key)
     {
+        // Thông báo bắt đầu di chuyển
+        movementSubject.IncrementMovingCustomers();
 
         yield return StartCoroutine(CustomerMovement.Move(
                 customer.associatedObject, CustomerManager.Instance.GetFirstInLinePosition()));
@@ -93,7 +93,6 @@ public class CustomerController : MonoBehaviour
         {
 
             GridCell cell = path.Pop();
-
             yield return StartCoroutine(CustomerMovement.Move(
                 customer.associatedObject, cell.tile.transform.position
                 + gridManager.GetThickTilePrefab() / 2));
@@ -105,13 +104,18 @@ public class CustomerController : MonoBehaviour
         yield return StartCoroutine(CustomerMovement.Sit(
                 customer.associatedObject, seatPosition.tile.transform.position
                 + gridManager.GetThickTilePrefab() / 2, seatPosition));
+
+        // Thông báo kết thúc di chuyển
+        movementSubject.DecrementMovingCustomers();
+
         totalCus--;
         string seatName = foundSeat.associatedObject.name;
         if (checkMoveSeat[seatName] == key)
         {
             //
             //foundSeat.movable = true;
-            foundSeat.movable = initialMovableSeat[seatName];
+            //foundSeat.movable = initialMovableSeat[seatName];
+            foundSeat.movable = foundSeat.seatColor != EnumColor.Grey;
         }
         else
         {
@@ -119,7 +123,6 @@ public class CustomerController : MonoBehaviour
         }
         if (totalCus == 0)
         {
-            //TimeController.stopTimeDelegate?.Invoke();
             StartCoroutine(Win());
         }
     }

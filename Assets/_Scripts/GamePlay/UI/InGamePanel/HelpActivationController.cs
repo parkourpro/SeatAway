@@ -7,10 +7,10 @@ public class HelpActivationController : MonoBehaviour
 {
     //script quản lý hiện ẩn số lượng help
     public GameObject helpAreaPanel;
-    public int unlockMoreTimeAt = 12;
-    public int unlockFreeMoveSeatAt = 18;
-    public int unlockPaintSeatAt = 25;
-    public int unlockChaseAwayCustomerAt = 32;
+    private int unlockMoreTimeAt = 9;
+    //private int unlockFreeMoveSeatAt = 11;
+    private int unlockPaintSeatAt = 11;
+    private int unlockChaseAwayCustomerAt = 13;
 
     IEnumerator Start()
     {
@@ -24,26 +24,25 @@ public class HelpActivationController : MonoBehaviour
         else
         {
             helpAreaPanel.SetActive(true);
-        }
-        Transform help = helpAreaPanel.transform.GetChild(0);
-        if (unlockLevel >= unlockMoreTimeAt && unlockLevel < unlockFreeMoveSeatAt)
-        {
-            SetActiveBaseOnParam(help, 1);
-        }
-        else if (unlockLevel >= unlockFreeMoveSeatAt && unlockLevel < unlockPaintSeatAt)
-        {
-            SetActiveBaseOnParam(help, 2);
+            Transform help = helpAreaPanel.transform.GetChild(0);
+            if (unlockLevel < unlockPaintSeatAt)
+            {
+                SetActiveBaseOnParam(help, 1);
+            }
+            else if (unlockLevel < unlockChaseAwayCustomerAt)
+            {
+                SetActiveBaseOnParam(help, 2);
 
-        }
-        else if (unlockLevel >= unlockPaintSeatAt && unlockLevel < unlockChaseAwayCustomerAt)
-        {
-            SetActiveBaseOnParam(help, 3);
+            }
+            //else if (unlockLevel < unlockChaseAwayCustomerAt)
+            //{
+            //    SetActiveBaseOnParam(help, 3);
 
-        }
-        else
-        {
-            SetActiveBaseOnParam(help, 4);
-
+            //}
+            else
+            {
+                SetActiveBaseOnParam(help, 3);
+            }
         }
 
     }

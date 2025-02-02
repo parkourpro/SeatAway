@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SpriteImgs
   m_EditorClassIdentifier: 
   lv8: {fileID: 21300000, guid: f46a0b4783225674f94aed20a5224073, type: 3}
-  lv12: {fileID: 21300000, guid: bbcf6dcdc84e2c645a3a7a7397c765ec, type: 3}
+  lv12: {fileID: 21300000, guid: e67e0ca075dee5a429e918dd287e8a00, type: 3}
   paintSeat: {fileID: 21300000, guid: 0ed3b379a40c6f14889fca30f8acd516, type: 3}

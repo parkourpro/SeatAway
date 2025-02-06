@@ -128,7 +128,7 @@ public class CustomerController : MonoBehaviour
     }
 
 
-    private IEnumerator Win()
+    public IEnumerator Win()
     {
         yield return StartCoroutine(busController.CloseDoor());
         CanvasController.onWinDo?.Invoke();

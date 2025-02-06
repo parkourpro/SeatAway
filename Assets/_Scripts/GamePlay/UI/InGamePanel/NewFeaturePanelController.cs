@@ -60,6 +60,7 @@ public class NewFeaturePanelController : MonoBehaviour
                 SetFeatureImage(spriteImg.GetSprite(3));
                 break;
             case 13:
+                SetFeatureImage(spriteImg.GetSprite(4));
                 break;
             case 15:
                 break;

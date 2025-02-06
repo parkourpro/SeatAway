@@ -9,16 +9,12 @@ public class LevelManager : MonoBehaviour
 {
     public GameObject allButtonGameObject;
     public Button playButton;
-    private int level = 1;
+    private int level;
     void Start()
     {
-        //comment dòng dưới để level tăng dần, dòng dưới sử
-        //dụng khi test level cụ thể bằng cách kéo scriptable
-        //object level vào inspector
-        //PlayerPrefs.SetInt("UnlockLevel", 1);
         if (!PlayerPrefs.HasKey("UnlockLevel"))
         {
-            PlayerPrefs.SetInt("UnlockLevel", level);
+            PlayerPrefs.SetInt("UnlockLevel", 1);
         }
         else
         {

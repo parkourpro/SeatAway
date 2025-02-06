@@ -15,3 +15,4 @@ MonoBehaviour:
   lv8: {fileID: 21300000, guid: f46a0b4783225674f94aed20a5224073, type: 3}
   lv12: {fileID: 21300000, guid: e67e0ca075dee5a429e918dd287e8a00, type: 3}
   paintSeat: {fileID: 21300000, guid: 0ed3b379a40c6f14889fca30f8acd516, type: 3}
+  chaseAwayCus: {fileID: 21300000, guid: 8aeb5727b671b1c4bbae9541ac2f132a, type: 3}

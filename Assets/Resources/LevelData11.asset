@@ -26,10 +26,10 @@ MonoBehaviour:
     row: 0
     col: 1
   - seatType: 0
-    seatColor: 2
+    seatColor: 8
     direction: 0
     row: 0
-    col: 3
+    col: 4
   - seatType: 0
     seatColor: 8
     direction: 0
@@ -80,8 +80,14 @@ MonoBehaviour:
     direction: 0
     row: 5
     col: 3
+  - seatType: 0
+    seatColor: 0
+    direction: 0
+    row: 6
+    col: 2
   obstacles: []
   customers:
+  - customerColor: 0
   - customerColor: 2
   - customerColor: 2
   - customerColor: 2

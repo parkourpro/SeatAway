@@ -40,8 +40,32 @@ MonoBehaviour:
     direction: 0
     row: 3
     col: 1
+  - seatType: 0
+    seatColor: 2
+    direction: 0
+    row: 3
+    col: 2
+  - seatType: 0
+    seatColor: 2
+    direction: 0
+    row: 4
+    col: 0
+  - seatType: 0
+    seatColor: 2
+    direction: 0
+    row: 4
+    col: 2
+  - seatType: 0
+    seatColor: 2
+    direction: 0
+    row: 5
+    col: 1
   obstacles: []
   customers:
+  - customerColor: 2
+  - customerColor: 2
+  - customerColor: 2
+  - customerColor: 2
   - customerColor: 2
   - customerColor: 2
   - customerColor: 2

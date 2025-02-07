@@ -36,6 +36,7 @@ public class ChaseAwayCustomerController : MonoBehaviour
             UpdateHelpCountUI();
             // Lấy khách hàng đầu tiên từ hàng đợi
             Customer customer = CustomerManager.Instance.customerList.Dequeue();
+            CustomerController.totalCus--;
             StartCoroutine(CustomerMovement.Move(customer.associatedObject, chaseAwayDes.position));
             if(CustomerManager.Instance.customerList.Count == 0)
             {

@@ -10,7 +10,7 @@ public class CustomerController : MonoBehaviour
     private int doorRow, doorCol;
 
 
-    private int totalCus;
+    public static int totalCus;
     private Dictionary<string, int> checkMoveSeat = new();
     //private Dictionary<string, bool> initialMovableSeat = new();
 
@@ -72,7 +72,6 @@ public class CustomerController : MonoBehaviour
                     checkMoveSeat.Add(seatName, startCus);
                 }
                 foundSeat.movable = false;
-
                 StartCoroutine(MoveToSeat(customer, path, foundSeat, checkMoveSeat[seatName]));
             }
         }
@@ -109,6 +108,7 @@ public class CustomerController : MonoBehaviour
         movementSubject.DecrementMovingCustomers();
 
         totalCus--;
+        //Debug.Log(totalCus);
         string seatName = foundSeat.associatedObject.name;
         if (checkMoveSeat[seatName] == key)
         {
@@ -121,7 +121,8 @@ public class CustomerController : MonoBehaviour
         {
             foundSeat.movable = false;
         }
-        if (totalCus == 0)
+        //if (CustomerManager.Instance.customerList.Count == 0)
+        if(totalCus == 0)
         {
             StartCoroutine(Win());
         }

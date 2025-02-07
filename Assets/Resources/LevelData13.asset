@@ -112,6 +112,7 @@ MonoBehaviour:
     col: 3
   obstacles: []
   customers:
+  - customerColor: 9
   - customerColor: 1
   - customerColor: 1
   - customerColor: 1

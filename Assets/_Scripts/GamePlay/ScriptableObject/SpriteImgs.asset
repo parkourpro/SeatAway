@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d504b91317b59d469665c9950c705db, type: 3}
   m_Name: SpriteImgs
   m_EditorClassIdentifier: 
-  lv8: {fileID: 21300000, guid: f46a0b4783225674f94aed20a5224073, type: 3}
-  lv12: {fileID: 21300000, guid: e67e0ca075dee5a429e918dd287e8a00, type: 3}
+  graySeatCanNotMove: {fileID: 21300000, guid: c818388006bcb054cb66a3d106874d22, type: 3}
+  addTimeHelp: {fileID: 21300000, guid: e67e0ca075dee5a429e918dd287e8a00, type: 3}
   paintSeat: {fileID: 21300000, guid: 0ed3b379a40c6f14889fca30f8acd516, type: 3}
   chaseAwayCus: {fileID: 21300000, guid: 8aeb5727b671b1c4bbae9541ac2f132a, type: 3}
+  manyColorsSeat: {fileID: 21300000, guid: 15f8b526a8018af4b826cb9e1ff22cd2, type: 3}
+  doubleSeat: {fileID: 21300000, guid: a16919083ecc11546902185b06011a05, type: 3}

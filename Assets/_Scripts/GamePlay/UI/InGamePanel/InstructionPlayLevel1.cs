@@ -2,7 +2,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class InstructionPanelController : MonoBehaviour
+public class InstructionPlayLevel1 : MonoBehaviour
 {
     public BusController busController;
     public GameObject instructionPanel;
@@ -16,7 +16,10 @@ public class InstructionPanelController : MonoBehaviour
         yield return new WaitUntil(() => GridManager.Instance.doneLevelData != "");
         int level = GridManager.Instance.GetLevel();
         yield return new WaitUntil(() => busController.busOpenDoor != "");
-        ProcessLevel(level);
+        if(level == 1)
+        {
+            MoveHand();
+        }
     }
 
     void Update()
@@ -27,32 +30,13 @@ public class InstructionPanelController : MonoBehaviour
         }
     }
 
-    void ProcessLevel(int level)
-    {
-        switch (level)
-        {
-            case 1:
-                MoveHand();
-                break;
-            //case 2:
-            //    break;
-            //case 3:
-            //    break;
-            //case 4:
-            //    break;
-            default:
-                break;
-        }
-    }
-
     void MoveHand()
     {
         ActivateInstructionPanel();
-        Transform handTransf = instructionPanel.transform.Find("Hand");
         RectTransform arrowTransf = instructionPanel.transform.Find("Arrow").GetComponent<RectTransform>();
-
-        RectTransform parentImg = handTransf.parent.GetComponent<RectTransform>();
-        RectTransform handRect = handTransf.gameObject.GetComponent<RectTransform>();
+        
+        RectTransform parentImg = instructionPanel.GetComponent<RectTransform>();
+        RectTransform handRect = instructionPanel.transform.Find("Hand").GetComponent<RectTransform>();
         GameObject bus = GameObject.Find("Bus");
         Transform seat1 = bus.transform.Find("AllSeats/seat1");
         Vector3 seatScreenPosition = Camera.main.WorldToScreenPoint(seat1.position);

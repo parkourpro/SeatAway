@@ -10,11 +10,13 @@ public class LevelManager : MonoBehaviour
     public GameObject allButtonGameObject;
     public Button playButton;
     private int level;
+    public GameObject commingSoonPanel;
     void Start()
     {
         if (!PlayerPrefs.HasKey("UnlockLevel"))
         {
             PlayerPrefs.SetInt("UnlockLevel", 1);
+            level = 1;
         }
         else
         {
@@ -54,6 +56,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             Debug.Log("Level chưa được tạo");
+            commingSoonPanel.SetActive(true);
         }
     }
 }

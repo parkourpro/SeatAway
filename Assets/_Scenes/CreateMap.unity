@@ -57344,8 +57344,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: (-.-)
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -57369,7 +57369,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 88.2
+  m_fontSize: 80.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -85797,7 +85797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c6779fd7982df4ca50cc67ea93265c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelData: {fileID: 11400000, guid: 0649989e5eaede14b8fbced004ab1855, type: 2}
+  levelData: {fileID: 11400000, guid: 1c840193b79e26e4d9fe79a63cffe6a5, type: 2}
   busPrefabs: {fileID: 11400000, guid: a89222a07fd2d9245a6e8225edc7bfbd, type: 2}
   whiteTilePrefab: {fileID: 7345093090041403734, guid: f9b8b61919d7dfc4b9c37ac81f38c55d, type: 3}
   blackTilePrefab: {fileID: 1470815633391434333, guid: d93f98fea1f287b4ca6a05da5b0f14b8, type: 3}

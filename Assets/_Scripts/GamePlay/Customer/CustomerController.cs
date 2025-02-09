@@ -131,6 +131,7 @@ public class CustomerController : MonoBehaviour
 
     public IEnumerator Win()
     {
+        SoundPlayer.Instance.PlaySoundWin();
         yield return StartCoroutine(busController.CloseDoor());
         CanvasController.onWinDo?.Invoke();
         int unlockLevel = GridManager.Instance.GetLevel();

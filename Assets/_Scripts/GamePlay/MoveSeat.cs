@@ -77,6 +77,7 @@ public class MoveSeat : MonoBehaviour
                         Debug.Log("Cannot move this seat");
                         return;
                     }
+                    SoundPlayer.Instance.PlaySoundSelect();
                     selectedSeatObject = hitObject; //gán vật đang chọn
                     selectedSeat = hitObject.GetComponent<SeatDataa>().seat; //lấy data ghế đang chọn
                     selectedSeatObject.transform.position += higher; //nâng ghế lên độ cao so với sàn
@@ -138,6 +139,7 @@ public class MoveSeat : MonoBehaviour
             Match match = Regex.Match(objectName, @"^r(\d+)_(\d+)$");
             if (match.Success)
             {
+                SoundPlayer.Instance.PlaySoundDrop();
                 // Lấy hai số từ nhóm bắt được trong regex
                 int firstNumber = int.Parse(match.Groups[1].Value);
                 int secondNumber = int.Parse(match.Groups[2].Value);

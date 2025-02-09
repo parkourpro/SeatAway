@@ -44,7 +44,7 @@ public class CustomerMovement : MonoBehaviour
 
         // Set rotation for sitting position based on seat direction
         customerObject.transform.rotation = GetSeatQuaternion((Seat)seatPosition.objectOncell);
-
+        SoundPlayer.Instance.PlaySoundCusSit();
         animator.SetBool("Sit", true);
 
         float height = 0.8f; // Độ cao của vòng cung

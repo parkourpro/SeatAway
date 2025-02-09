@@ -25,6 +25,7 @@ public class BubbleSeatEffect : MonoBehaviour
             {
                 if (gridCells[i, j].isOccupied)
                 {
+                    SoundPlayer.Instance.PlaySoundBubbleSeat();
                     GameObject associatedObject = gridCells[i, j].objectOncell.associatedObject;
                     associatedObject.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), .7f) // Phóng to hơn một chút
                              .OnComplete(() =>

@@ -30,8 +30,14 @@ public class BusController : MonoBehaviour
 
         //đợi các vị trí dừng xe được thiét lập ròi mới di chuyển xe
         yield return new WaitUntil(() => BusManager.Instance.doneAllBusPosition != "");
+        SoundPlayer.Instance.PlaySoundBusCome();
+
         yield return StartCoroutine(busMovement.MoveToTheBusStop(GridManager.Instance.bus,
             BusManager.Instance.busStopPosition));
+        if (BgSound.Instance != null)
+        {
+            BgSound.Instance.PlaySoundGamePlay();
+        }
         //nổi bọt ghế
         yield return StartCoroutine(bubbleSeatEffect.BubbleSeat());
         // mở cửa

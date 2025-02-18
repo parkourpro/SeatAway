@@ -7,12 +7,16 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public BuyHeartPanel zeroHeartPanel;
+    //public GameObject pausePanelContainer;
+    //public GameObject pausePanel;
     public GameObject allButtonGameObject;
     public Button playButton;
     private int level;
     public GameObject commingSoonPanel;
     void Start()
     {
+        //PlayerPrefs.SetInt("UnlockLevel", 15);
         if (!PlayerPrefs.HasKey("UnlockLevel"))
         {
             PlayerPrefs.SetInt("UnlockLevel", 1);
@@ -48,6 +52,13 @@ public class LevelManager : MonoBehaviour
 
     void OnPlayButtonClick()
     {
+        int heartCount = SaveSystem.GetHeart();
+        if(heartCount == 0)
+        {
+            Debug.Log("Hết tim");
+            zeroHeartPanel.ShowZeroHeartPanel();
+            return;
+        }
         bool a = LevelLoader.Instance.LoadLevel(level);
         if (a)
         {

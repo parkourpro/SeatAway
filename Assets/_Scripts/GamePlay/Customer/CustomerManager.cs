@@ -103,6 +103,7 @@ public class CustomerManager : Singleton<CustomerManager>
         }
         //Debug.Log(customer.customerColor);
         customerRender.material.color = ColorHelper.GetColor(customer.customerColor);
+        //customerRender.material.metalic
         //Debug.Log(customerRender.material);
         //customerRender.material.SetColor("_BaseColor", customer.customerColor);
     }

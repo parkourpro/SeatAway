@@ -44,6 +44,13 @@ public class SoundPlayer : Singleton<SoundPlayer>
         audioSource.Play();
     }
 
+    public void PlaySoundLoose()
+    {
+        audioSource.clip = audioClips[6];
+        SetVolume(0.5f);
+        audioSource.Play();
+    }
+
     public void SetVolume(float volume)
     {
         volume = Mathf.Clamp(volume, 0.0f, 1.0f);

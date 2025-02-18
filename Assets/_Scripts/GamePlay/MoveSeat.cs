@@ -22,13 +22,30 @@ public class MoveSeat : MonoBehaviour
     private bool startedTime = false;
 
     public CustomerController customerController;
-    //private void Start()
-    //{
-    //}
-    // Update is called once per frame
+
+    private bool isSelectionEnabled = true;
+    public delegate void MoveSeatDelegate(bool state);
+    public static MoveSeatDelegate setSelectionEnable;
+    
+    public static bool isDragFirstSeat;
+
+    private void OnEnable()
+    {
+        setSelectionEnable += SetSelectionSeat;
+    }
+
+    private void OnDisable()
+    {
+        setSelectionEnable -= SetSelectionSeat;
+    }
+
+    private void Start()
+    {
+        isDragFirstSeat = false;
+    }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isSelectionEnabled)
         {
             DetectSeatSelection();
             if (selectedSeatObject != null)
@@ -70,6 +87,18 @@ public class MoveSeat : MonoBehaviour
                     {
                         startedTime = true;
                         TimeController.startTimeDelegate?.Invoke();
+                    }
+                    if (!isDragFirstSeat)
+                    {
+                        isDragFirstSeat = true; //dùng để kích hoạt sự kiện trừ lượt chơi nếu thua
+                        if(SaveSystem.GetHeart() == HeartManager.maxHeartCount)
+                        {
+                            //Debug.Log("Save time");
+                            SaveSystem.SaveTime();
+                            SaveSystem.SaveRemainderSec(HeartManager.secondsToRecoverHeart);
+                        }
+                        SaveSystem.SaveHeart(SaveSystem.GetHeart() - 1);
+                        //Debug.Log("Sub to: " + SaveSystem.GetHeart());
                     }
                     //Debug.Log(hitObject.gameObject.name); //in ra tên ghế
                     if (hitObject.GetComponent<SeatDataa>().seat.movable == false)
@@ -166,5 +195,9 @@ public class MoveSeat : MonoBehaviour
         selectedSeat = null;
     }
 
-
+    private void SetSelectionSeat(bool state)
+    {
+        isSelectionEnabled = state;
+        //Debug.Log("Seat selection: " + state);
+    }
 }

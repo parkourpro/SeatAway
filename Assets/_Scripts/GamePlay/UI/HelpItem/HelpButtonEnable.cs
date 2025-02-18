@@ -7,16 +7,11 @@ public class HelpButtonEnable : MonoBehaviour
 {
     public GameObject help;
     public string doneEnableAllHelpButton = null;
-    public GameObject capCollider;
-
-    private void Awake()
-    {
-        capCollider.SetActive(true);
-    }
+    public BusController busController;
     IEnumerator Start()
     {
         DisableButton();
-        yield return new WaitUntil(() => !capCollider.activeSelf);
+        yield return new WaitUntil(() => busController.busOpenDoor != "");
         EnableButton();
         doneEnableAllHelpButton = "doneEnableAllHelpButton";
     }

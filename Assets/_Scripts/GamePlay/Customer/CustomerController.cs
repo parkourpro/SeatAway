@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CustomerController : MonoBehaviour
 {
     private GridManager gridManager;
     public BusController busController;
     private int doorRow, doorCol;
+    public Button pauseButton;
 
 
     public static int totalCus;
@@ -52,6 +54,7 @@ public class CustomerController : MonoBehaviour
             {
                 if (CustomerManager.Instance.customerList.Count == 1)
                 {
+                    pauseButton.enabled = false;
                     TimeController.stopTimeDelegate?.Invoke();
                 }
                 Seat foundSeat = BFS_FindPath.Instance.GetFoundSeat();
@@ -131,11 +134,16 @@ public class CustomerController : MonoBehaviour
 
     public IEnumerator Win()
     {
+        pauseButton.enabled = false;
+        MoveSeat.setSelectionEnable?.Invoke(false);
         SoundPlayer.Instance.PlaySoundWin();
         yield return StartCoroutine(busController.CloseDoor());
         CanvasController.onWinDo?.Invoke();
         int unlockLevel = GridManager.Instance.GetLevel();
         PlayerPrefs.SetInt("UnlockLevel", unlockLevel + 1);
+        SaveSystem.SaveHeart(SaveSystem.GetHeart() + 1);
+        //Debug.Log("Add To: " + SaveSystem.GetHeart());
+
     }
 
 }

@@ -49,7 +49,7 @@ public class BgSound : MonoBehaviour
     public void PlaySoundGamePlay()
     {
         audioSource.clip = audioClips[1];
-        SetVolume(0.4f);
+        //SetVolume(0.4f);
         audioSource.Play();
     }
 

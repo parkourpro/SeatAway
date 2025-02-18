@@ -9,14 +9,16 @@ public class PaintSeat : MonoBehaviour
 {
     public Button paintSeatButton;
     public TextMeshProUGUI helpCountText;
-    private int helpCount = 2; // Mặc định số lần trợ giúp là 2
+    public BuyHelpItem buyHelpItem;
+
+    private int helpCount; // số lần trợ giúp
 
     private List<Transform> animatedSeats = new List<Transform>(); // Lưu các ghế đang có hiệu ứng
     private bool isPainSeatMode = false;
     private void Start()
     {
         paintSeatButton.onClick.AddListener(OnPaintSeatButtonClick);
-        helpCount = 2;
+        helpCount = 1;
         UpdateHelpCountUI(); // Cập nhật UI khi bắt đầu
     }
 
@@ -63,9 +65,14 @@ public class PaintSeat : MonoBehaviour
 
     void OnPaintSeatButtonClick()
     {
+        if (TimeController.hasWon)
+        {
+            return;
+        }
         if (helpCount <= 0)
         {
             Debug.Log("Hết lượt trợ giúp sơn ghế");
+            buyHelpItem.ShowBuyHelpItemPanel(2);
             return;
         }
 
@@ -108,9 +115,16 @@ public class PaintSeat : MonoBehaviour
 
     private void UpdateHelpCountUI()
     {
-        if (helpCountText != null)
+        helpCountText.text = helpCount.ToString();
+        if (helpCount <= 0)
         {
-            helpCountText.text = helpCount.ToString();
+            helpCountText.text = "+";
         }
+    }
+
+    public void AddHelpCount(int count)
+    {
+        helpCount += count;
+        UpdateHelpCountUI();
     }
 }

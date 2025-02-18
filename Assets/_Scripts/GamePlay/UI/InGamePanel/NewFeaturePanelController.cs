@@ -38,6 +38,8 @@ public class NewFeaturePanelController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 MoveOutFeatureImage();
+                MoveSeat.setSelectionEnable?.Invoke(true);
+                isMoveIn = false;
             }
         }
     }
@@ -78,6 +80,7 @@ public class NewFeaturePanelController : MonoBehaviour
 
     void SetFeatureImage(Sprite sp)
     {
+        MoveSeat.setSelectionEnable?.Invoke(false);
         ActivateNewFeaturePanel();
         contentImage.GetComponent<Image>().sprite = sp;
         MoveInFeatureImage();

@@ -10,23 +10,32 @@ public class ChaseAwayCustomerController : MonoBehaviour
     public Button chaseAwayCustomerButton;
     public CustomerController customerController;
     public TextMeshProUGUI helpCountText;
-    private int helpCount = 2;
+    public BuyHelpItem buyHelpItem;
+
+
+    private int helpCount;
 
 
     private void Start()
     {
         // Đăng ký sự kiện khi nút được nhấn
         chaseAwayCustomerButton.onClick.AddListener(OnChaseAwayCustomerButtonClick);
-        helpCount = 2;
+        helpCount = 1;
         UpdateHelpCountUI();
 
     }
 
     private void OnChaseAwayCustomerButtonClick()
     {
+        if (TimeController.hasWon)
+        {
+            return;
+        }
+
         if (helpCount <= 0)
         {
             Debug.Log("Hết lượt trợ giúp đuổi khách");
+            buyHelpItem.ShowBuyHelpItemPanel(3);
             return;
         }
         // Kiểm tra xem có khách hàng trong hàng đợi không
@@ -38,7 +47,7 @@ public class ChaseAwayCustomerController : MonoBehaviour
             Customer customer = CustomerManager.Instance.customerList.Dequeue();
             CustomerController.totalCus--;
             StartCoroutine(CustomerMovement.Move(customer.associatedObject, chaseAwayDes.position));
-            if(CustomerManager.Instance.customerList.Count == 0)
+            if (CustomerManager.Instance.customerList.Count == 0)
             {
                 StartCoroutine(customerController.Win());
                 return;
@@ -54,9 +63,16 @@ public class ChaseAwayCustomerController : MonoBehaviour
 
     private void UpdateHelpCountUI()
     {
-        if (helpCountText != null)
+        helpCountText.text = helpCount.ToString();
+        if (helpCount <= 0)
         {
-            helpCountText.text = helpCount.ToString();
+            helpCountText.text = "+";
         }
+    }
+
+    public void AddHelpCount(int count)
+    {
+        helpCount += count;
+        UpdateHelpCountUI();
     }
 }

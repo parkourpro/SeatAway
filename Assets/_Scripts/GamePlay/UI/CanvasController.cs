@@ -12,7 +12,7 @@ public class CanvasController : MonoBehaviour
     public static MyDelegate onLoseDo;
     public GameObject winPanel;
     public GameObject losePanel;
-    public Button continueButton;
+    //public Button continueButton;
     public Button continueButton2;
     //public TextMeshProUGUI levelText;
     private void OnEnable()
@@ -29,7 +29,7 @@ public class CanvasController : MonoBehaviour
     {
         winPanel.SetActive(false);
         losePanel.SetActive(false);
-        continueButton.onClick.AddListener(OnContinueButtonClick);
+        //continueButton.onClick.AddListener(OnContinueButtonClick);
         continueButton2.onClick.AddListener(OnContinueButtonClick);
         //levelText.text = "Level " + PlayerPrefs.GetInt("UnlockLevel").ToString();
     }
@@ -37,17 +37,11 @@ public class CanvasController : MonoBehaviour
     // Update is called once per frame
     private void ShowWinPanel()
     {
-        if (winPanel != null)
-        {
-            winPanel.SetActive(true);
-        }
+        winPanel.SetActive(true);
     }
     private void ShowLosePanel()
     {
-        if (losePanel != null)
-        {
-            losePanel.SetActive(true);
-        }
+        losePanel.SetActive(true);
     }
 
     private void OnContinueButtonClick()

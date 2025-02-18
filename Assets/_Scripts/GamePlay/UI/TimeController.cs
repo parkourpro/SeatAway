@@ -4,11 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeController : MonoBehaviour
+public class TimeController : Singleton<TimeController>
 {
     public delegate void MyDelegate();
     public static MyDelegate startTimeDelegate;
     public static MyDelegate stopTimeDelegate;
+    public static MyDelegate pauseTimeDelegate;
+    public static MyDelegate resumeTimeDelegate;
 
     private GridManager gridManager;
     public BusController busController;
@@ -17,88 +19,101 @@ public class TimeController : MonoBehaviour
     public Image green;
     public TextMeshProUGUI timeShow;
     private int remainSecond;
-    private bool hasWon = false;
+    public static bool hasWon;
     private bool isSetUpTime = false;
     private bool isDraggingSeat = false;
+    private bool isPaused = false; // Thêm biến kiểm soát trạng thái pause
     private float startTime;
-    private float elapseTime;
+    private float elapsedTime; // Thời gian đã trôi qua
     private bool isHandlingLose = false;
+    public Button pauseButton;
+
     IEnumerator Start()
     {
         gridManager = GridManager.Instance;
         yield return new WaitUntil(() => gridManager.doneGrid != "");
         timeOfLevel = gridManager.levelData.timeInSecond;
         isSetUpTime = true;
+        hasWon = false;
     }
 
     private void OnEnable()
     {
         startTimeDelegate += StartGame;
         stopTimeDelegate += StopTime;
-
+        pauseTimeDelegate += PauseTime;
+        resumeTimeDelegate += ResumeTime;
     }
+
     private void OnDisable()
     {
         startTimeDelegate -= StartGame;
         stopTimeDelegate -= StopTime;
+        pauseTimeDelegate -= PauseTime;
+        resumeTimeDelegate -= ResumeTime;
     }
-
 
     void Update()
     {
-        if (isSetUpTime)
+        if (isSetUpTime && !isPaused) // Chỉ cập nhật thời gian nếu không bị pause
         {
             if (hasWon || isHandlingLose) return;
+
             if (!isDraggingSeat)
             {
-                startTime = Time.timeSinceLevelLoad;
+                startTime = Time.time;
                 remainSecond = timeOfLevel;
             }
             else
             {
-                elapseTime = Time.timeSinceLevelLoad - startTime;
-                float elapsedRatio = elapseTime / timeOfLevel;
+                elapsedTime = Time.time - startTime;
+                float elapsedRatio = elapsedTime / timeOfLevel;
 
                 if (elapsedRatio < 0.5f)
                 {
-                    // Tăng r từ 0 lên 255 khi tỷ lệ từ 0 đến 0.5
                     float r = Mathf.Lerp(0, 255, elapsedRatio * 2);
                     green.color = new Color(r / 255f, 1f, 0f);
                 }
                 else
                 {
-                    // Giảm g từ 255 xuống 0 khi tỷ lệ từ 0.5 đến 1
                     float g = Mathf.Lerp(1f, 0f, (elapsedRatio - 0.5f) * 2);
                     green.color = new Color(1f, g, 0f);
                 }
 
-                green.fillAmount = (float)(1 - elapseTime / timeOfLevel);
+                green.fillAmount = 1 - (elapsedTime / timeOfLevel);
+                remainSecond = timeOfLevel - (int)elapsedTime;
 
-
-                remainSecond = timeOfLevel - (int)elapseTime;
                 if (remainSecond < 0)
                 {
                     remainSecond = 0;
-                    //yield return StartCoroutine(busController.CloseDoor());
-                    //CanvasController.onLoseDo?.Invoke();
                     StartCoroutine(HandleLose());
                 }
             }
-
 
             timeShow.text = FormatTime(remainSecond);
         }
     }
 
-
     void StartGame()
     {
         isDraggingSeat = true;
+        isPaused = false; // Đảm bảo thời gian không bị pause khi bắt đầu
     }
 
     void StopTime()
     {
         hasWon = true;
+    }
+
+    public void PauseTime()
+    {
+        isPaused = true; // Tạm dừng thời gian
+    }
+
+    public void ResumeTime()
+    {
+        isPaused = false; // Tiếp tục thời gian
+        startTime = Time.time - elapsedTime; // Điều chỉnh lại startTime để tiếp tục đúng thời điểm
     }
 
     string FormatTime(int seconds)
@@ -114,25 +129,40 @@ public class TimeController : MonoBehaviour
 
     private IEnumerator HandleLose()
     {
-        isHandlingLose = true; // Đặt cờ để ngăn hàm update chạy
-        yield return StartCoroutine(busController.CloseDoor()); // Đợi đóng cửa xong
-        CanvasController.onLoseDo?.Invoke(); // Sau khi cửa đóng, gọi hành động thua
+        if (SaveSystem.GetHeart() == HeartManager.maxHeartCount - 1)
+        {
+            SaveSystem.SaveTime();
+            SaveSystem.SaveRemainderSec(HeartManager.secondsToRecoverHeart);
+            //Debug.Log("Save time");
+        }
+        //SaveSystem.SaveHeart(SaveSystem.GetHeart() - 1);
+        pauseButton.enabled = false;
+        isHandlingLose = true;
+        yield return StartCoroutine(busController.CloseDoor());
+        SoundPlayer.Instance.PlaySoundLoose();
+        CanvasController.onLoseDo?.Invoke();
     }
 
-    public void AddTime(int additionalSeconds)
+    //public void AddTime(int additionalSeconds)
+    //{
+    //    if (!isSetUpTime || hasWon || isHandlingLose) return;
+
+    //    if (elapsedTime >= additionalSeconds)
+    //    {
+    //        startTime += additionalSeconds;
+    //    }
+    //    else
+    //    {
+    //        startTime = Time.time;
+    //    }
+    //}
+
+    public IEnumerator FreezeTime(float freezeDuration)
     {
-        if (!isSetUpTime || hasWon || isHandlingLose) return;
-
-        if (Time.timeSinceLevelLoad - startTime >= additionalSeconds)
-        {
-            startTime += additionalSeconds;
-        }
-        else
-        {
-            startTime = Time.timeSinceLevelLoad;
-        }
-
+        MoreTimeButtonController.isFreezeTime = true;
+        PauseTime();
+        yield return new WaitForSeconds(freezeDuration);
+        ResumeTime();
+        MoreTimeButtonController.isFreezeTime = false;
     }
-
-
 }

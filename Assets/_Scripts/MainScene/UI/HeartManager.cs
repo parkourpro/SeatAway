@@ -78,11 +78,9 @@ public class HeartManager : MonoBehaviour
 
         /////////////////
         //remainSeconds = SaveSystem.GetRemainderSec();
-
-
-
-
-
+        heartText.text = heartCount.ToString();
+        numHeartInHeartImage.text = heartCount.ToString();
+        priceOfRefill.text = (priceOneHeart * (maxHeartCount - heartCount)).ToString();
 
 
 
